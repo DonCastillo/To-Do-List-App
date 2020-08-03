@@ -1,3 +1,55 @@
 body{
     /* background-color:blue; */
+    background-color:teal;
+}
+#wrapper{
+    margin:2em;
+}
+section{
+    float:left;
+    min-height:100vh;
+}
+.to-do-panel{
+    background-color:lightcoral;
+    display:inline-flex;
+    justify-content:center;
+    align-items: center;
+    width:40%;
+}
+#to-do{
+    
+}
+.tasks-panel{
+    background-color:lightcyan;
+    width:60%;
+}
+#to-do #top-panel{
+    min-height: 150px;
+    width:350px;
+    background-color:green;
+}
+form{
+    background-color:orange;
+}
+form input,
+form textarea{
+    width:100%;
+    padding:0;
+    margin:0;
+}
+
+@media screen and (max-width: 1199px) {
+
+}
+
+@media screen and (max-width: 991px) {
+
+}
+
+@media screen and (max-width: 767px) {
+    section{
+        float: unset;
+        min-height:50vh;
+        width:100%;
+    }
 }
