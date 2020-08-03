@@ -33,6 +33,9 @@ box-shadow: 10px 10px 14px -6px rgba(0,0,0,0.62);
     /* background-color:lightcyan; */
     width:60%;
 }
+.tasks-panel h1{
+    margin-bottom:30px;
+}
 #to-do #top-panel{
     min-height: 150px;
     width:100%;
@@ -124,17 +127,32 @@ ul#cards li{
     -moz-box-shadow: 10px 10px 27px -16px rgba(0,0,0,0.84);
     box-shadow: 10px 10px 27px -16px rgba(0,0,0,0.84);
     position:relative;
+    margin:10px;
+    width:250px;
+    padding:10px;
+    display:inline-block;
 }
 .task-card .priority{
-    clip-path: polygon(0 0, 100% 0, 100% 100%);
-    position:absolute;
-    top:0;
-    right:0;
-    height:40px;
-    width:40px;
+    font-size:10px;
+    font-weight:bold;
+    color:white;
+    padding:1px 4px;
+    border-radius:5px;
 }
-.task-card .priority.high-priority{
+.task-card p{
+    font-size:13px;
+}
+.task-card h4{
+    font-size:19px;
+}
+.task-card .priority.high{
     background-color:red;
+}
+.task-card .priority.medium{
+    background-color:orange;
+}
+.task-card .priority.low{
+    background-color:green;
 }
 
 
