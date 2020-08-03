@@ -1,6 +1,6 @@
 body{
-    /* background-color:blue; */
-    background-color:teal;
+    /* background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(79,79,79,1) 100%); */
 }
 #wrapper{
     margin:2em;
@@ -8,34 +8,64 @@ body{
 section{
     float:left;
     min-height:100vh;
+    padding:18px;
 }
 .to-do-panel{
-    background-color:lightcoral;
-    display:inline-flex;
+    /* background-color:lightcoral; */
+    display:flex;
     justify-content:center;
     align-items: center;
     width:40%;
-}
-#to-do{
     
 }
+#to-do{
+    max-width:375px;
+    -webkit-box-shadow: 10px 10px 14px -6px rgba(0,0,0,0.62);
+-moz-box-shadow: 10px 10px 14px -6px rgba(0,0,0,0.62);
+box-shadow: 10px 10px 14px -6px rgba(0,0,0,0.62);
+}
 .tasks-panel{
-    background-color:lightcyan;
+    /* background-color:lightcyan; */
     width:60%;
 }
 #to-do #top-panel{
     min-height: 150px;
-    width:350px;
-    background-color:green;
+    width:100%;
+    position:relative;
+    
+    /* background-color:green; */
+}
+#to-do #top-panel #date-stamp{
+    position:absolute;
+    bottom:0;
+    right:0;
+    margin:0 15px 5px;
+    text-align:right;
 }
 form{
-    background-color:orange;
+    background-color: #b5dae8;
+    padding:15px;
 }
 form input,
-form textarea{
+form textarea,
+form select{
     width:100%;
-    padding:0;
-    margin:0;
+    padding:8px;;
+    margin:10px 0 0 0;
+    /* border-radius:6px; */
+    border:0;
+}
+form textarea{
+    resize:none;
+    min-height:90px;
+}
+form label{
+    width:100%;
+    font-weight:bold;
+    margin:10px 5px 10px 5px;
+}
+form input[type="submit"]{
+    margin-top:25px;
 }
 
 @media screen and (max-width: 1199px) {
@@ -50,6 +80,9 @@ form textarea{
     section{
         float: unset;
         min-height:50vh;
+        width:100%;
+    }
+    .to-do-panel, .tasks-panel{
         width:100%;
     }
 }

@@ -25,17 +25,30 @@
         <div id="wrapper">
             <section class="to-do-panel">
                 <div id="to-do">
-                    <div id="top-panel">z</div>
+                    <div id="top-panel">
+                        <div id="date-stamp">
+                            <h4 id="date">September 1, 2020</h4>
+                            <h5 id="day">TUESDAY</h5>
+                        </div>
+                        
+                    </div>
                     <div id="bottom-panel">
                         <form>
-                            <input id="task-title" type="text" >
-                            <textarea id="task-description"></textarea>
+                            <input id="task-title" type="text" placeholder="Add Task">
+                            <textarea id="task-description" placeholder="Add Description (optional)"></textarea>
+                            <label for="priority">Priority</label>
+                            <select id="priority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                            <input type="submit" value="Add Card">
 
                         </form>
                     </div>
                 </div>
             </section>
-            <section class="tasks-panel">s</section>
+            <section class="tasks-panel"></section>
         </div>
         
 
