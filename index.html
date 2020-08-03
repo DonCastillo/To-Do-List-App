@@ -9,7 +9,8 @@
         <title>To-Do List Web App</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/all.css">
+        <!-- <link rel="stylesheet" href="css/all.css"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -47,7 +48,12 @@
                                 <option value="medium">Medium</option>
                                 <option value="high">High</option>
                             </select>
-                            <input type="submit" value="Add Card">
+                            <!-- <input type="submit" value="Add Card">
+                            <input type="reset" value="Add Card"> -->
+                            <div id="buttons">
+                                <button id="add-button"><i class="fas fa-plus"></i></button>
+                                <button id="reset-button"><i class="fas fa-times"></i></button>
+                            </div>
 
                         </form>
                     </div>

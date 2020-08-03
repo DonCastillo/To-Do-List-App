@@ -54,18 +54,19 @@ form{
 }
 form input,
 form textarea,
-form select{
+form select,
+form button{
     width:100%;
     padding:8px;;
     margin:10px 0 0 0;
-    /* border-radius:6px; */
     border:0;
 }
-/* form input:hover,
+form input:hover,
 form textarea:hover,
-form select:hover{
-    background-color:grey;
-} */
+form select:hover,
+form button:hover{
+    filter: brightness(0.9);
+}
 form textarea{
     resize:none;
     min-height:90px;
@@ -77,6 +78,30 @@ form label{
 }
 form input[type="submit"]{
     margin-top:25px;
+}
+form #buttons{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form button i{
+    font-size:25px;
+    color:white;
+}
+form button#add-button,
+form button#reset-button{
+    width:48%;
+}
+
+
+
+form button#reset-button{
+    background-color: #c23f3f;
+}
+form button#add-button{
+    background-color:#47a547;
 }
 
 @media screen and (max-width: 1199px) {
