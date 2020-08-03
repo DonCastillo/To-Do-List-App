@@ -44,22 +44,33 @@
                             <textarea id="task-description" placeholder="Add Description (optional)"></textarea>
                             <label for="priority">Priority</label>
                             <select id="priority">
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
+                                <option value="low"><i class="fas fa-circle"></i>Low</option>
+                                <option value="medium"><i class="fas fa-circle"></i>Medium</option>
+                                <option value="high"><i class="fas fa-circle"></i>High</option>
                             </select>
-                            <!-- <input type="submit" value="Add Card">
-                            <input type="reset" value="Add Card"> -->
                             <div id="buttons">
-                                <button id="add-button"><i class="fas fa-plus"></i></button>
-                                <button id="reset-button"><i class="fas fa-times"></i></button>
+                                <button id="add-button" type="submit"><i class="fas fa-plus"></i></button>
+                                <button id="reset-button" type="reset"><i class="fas fa-times"></i></button>
                             </div>
 
                         </form>
                     </div>
                 </div>
             </section>
-            <section class="tasks-panel"></section>
+            <section class="tasks-panel">
+                <h1>Tasks:</h1>
+                <ul id="cards">
+                    <li>
+                        <div class="task-card">
+                            <div class="priority high-priority">
+
+                            </div>
+
+                            
+                        </div>
+                    </li>
+                </ul>
+            </section>
         </div>
         
 

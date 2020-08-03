@@ -7,7 +7,7 @@ body{
 }
 section{
     float:left;
-    min-height:100vh;
+    min-height:90vh;
     padding:18px;
 }
 .bg-img{
@@ -67,6 +67,12 @@ form select:hover,
 form button:hover{
     filter: brightness(0.9);
 }
+form select option i{
+    font-size:10px
+}
+form select option[value="low"] i{
+
+}
 form textarea{
     resize:none;
     min-height:90px;
@@ -74,7 +80,7 @@ form textarea{
 form label{
     width:100%;
     font-weight:bold;
-    margin:10px 5px 10px 5px;
+    margin: 14px 0 0
 }
 form input[type="submit"]{
     margin-top:25px;
@@ -95,14 +101,42 @@ form button#reset-button{
     width:48%;
 }
 
-
-
 form button#reset-button{
     background-color: #c23f3f;
 }
 form button#add-button{
     background-color:#47a547;
 }
+ul#cards{
+    column-count:3;
+    column-gap:0;
+    list-style-type: none;
+    padding: 0;
+}
+ul#cards li{
+    -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid;
+}
+.task-card{
+    min-height:120px;
+    -webkit-box-shadow: 10px 10px 27px -16px rgba(0,0,0,0.84);
+    -moz-box-shadow: 10px 10px 27px -16px rgba(0,0,0,0.84);
+    box-shadow: 10px 10px 27px -16px rgba(0,0,0,0.84);
+    position:relative;
+}
+.task-card .priority{
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    position:absolute;
+    top:0;
+    right:0;
+    height:40px;
+    width:40px;
+}
+.task-card .priority.high-priority{
+    background-color:red;
+}
+
 
 @media screen and (max-width: 1199px) {
 
