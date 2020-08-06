@@ -1,3 +1,47 @@
+function determineSeason(month, date){
+    /** 
+     * winter => dec. 21 - mar. 20
+     * spring => mar. 21 - jun. 20
+     * summer => jun. 21 -sep. 20
+     * fall => sep. 21 - dec. 20
+     */
+    var season = '';
+    switch( month ){
+        case 'January':
+        case 'February':
+            season = 'winter';
+            break;
+        case 'March':
+            season = ( date < 21 ) ? 'winter' : 'spring';
+            break;
+        case 'April':
+        case 'May':
+            season = 'spring';
+            break;
+        case 'June':
+            season = ( date < 21 ) ? 'spring' : 'summer';
+            break;
+        case 'July':
+        case 'August':
+            season = 'summer';
+            break;
+        case 'September':
+            season = ( date < 21 ) ? 'summer' : 'fall';
+            break;
+        case 'October':
+        case 'November':
+            season = 'fall';
+            break;
+        case 'December':
+            season = ( date < 21 ) ? 'fall' : 'winter';
+            break;
+        default:
+            season = '';
+            break;
+    }
+    return season;
+}
+
 function updateDate(){
 
     var dateEl = document.getElementById('date');
@@ -33,7 +77,16 @@ function updateDate(){
     dateEl.textContent = `${currentMonth} ${currentDate}, ${currentYear}`;
     dayEl.textContent = `${currentDay}`;
 
-    
+    // update wallpaper
+    var currentSeason = determineSeason(currentMonth, currentDate);
+
+    for(let i = 0; i < toDoWallpapers.length; ++i){
+        if( toDoWallpapers[i].season == currentSeason){
+            imageEl.style.backgroundImage = `url("images/${toDoWallpapers[i].image}")`;
+        }
+    }
+
+
 
 
 }
