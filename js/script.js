@@ -85,11 +85,50 @@ function updateDate(){
             imageEl.style.backgroundImage = `url("images/${toDoWallpapers[i].image}")`;
         }
     }
+}
 
+// function formSubmit(){
+//     var taskTitleEl = document.getElementById('task-title');
+//     var taskDescriptionEl = document.getElementById('task-description');
 
+// }
 
+function updateDescriptionStatus(){
+    var taskTitleEl = document.getElementById('task-title');
+    var taskDescriptionEl = document.getElementById('task-description');
+
+    if( taskTitleEl.nodeValue.length ){
+        taskDescriptionEl.removeAttribute('disabled');
+    } else {
+        taskDescriptionEl.setAttribute('disabled');
+    }   
+}
+
+function countDescriptionText(){
+    var taskDescriptionEl = document.getElementById('task-description');
+    var numCharEl = document.getElementById('num-of-char');
+    var textLeft = 60 - taskDescriptionEl.nodeValue.length;
+    var msg = '', color = '';
+
+    if (textLeft > 1){
+        msg = `${textLeft} characters left`;
+        color = 'green';
+    } else if(textLeft == 1 || textLeft == 0){
+        msg = `${textLeft} character left`;
+        color = 'green';
+    } else {
+        msg = `${textLeft} characters left` 
+        color = 'red';
+    }
+
+    numCharEl.textContent = msg;
+    numCharEl.style.color = color;
+    numCharEl.style.fontWeight =  bold;
 
 }
 
 
+
+
 updateDate();
+updateForm();
