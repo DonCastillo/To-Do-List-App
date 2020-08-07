@@ -1,3 +1,11 @@
+var taskTitleEl = document.getElementById('task-title');
+var taskDescriptionEl = document.getElementById('task-description');
+var numCharEl = document.getElementById('num-of-char');
+var selectEl = document.getElementById('priority');
+var taskCards = document.getElementsByClassName('task-card');
+
+var textLeft = '';
+
 function determineSeason(month, date){
     /** 
      * winter => dec. 21 - mar. 20
@@ -87,27 +95,17 @@ function updateDate(){
     }
 }
 
-// function formSubmit(){
-//     var taskTitleEl = document.getElementById('task-title');
-//     var taskDescriptionEl = document.getElementById('task-description');
-
-// }
-
 function updateDescriptionStatus(){
-    var taskTitleEl = document.getElementById('task-title');
-    var taskDescriptionEl = document.getElementById('task-description');
-
-    if( taskTitleEl.nodeValue.length ){
-        taskDescriptionEl.removeAttribute('disabled');
+    if( taskTitleEl.value.length ){
+        taskDescriptionEl.removeAttribute('disabled', '');
     } else {
-        taskDescriptionEl.setAttribute('disabled');
+        taskDescriptionEl.setAttribute('disabled', '');
     }   
 }
 
 function countDescriptionText(){
-    var taskDescriptionEl = document.getElementById('task-description');
     var numCharEl = document.getElementById('num-of-char');
-    var textLeft = 60 - taskDescriptionEl.nodeValue.length;
+    textLeft = 60 - taskDescriptionEl.value.length;
     var msg = '', color = '';
 
     if (textLeft > 1){
@@ -123,12 +121,18 @@ function countDescriptionText(){
 
     numCharEl.textContent = msg;
     numCharEl.style.color = color;
-    numCharEl.style.fontWeight =  bold;
+    numCharEl.style.fontWeight =  'bold';
 
+}
+
+function submitForm(){
+    taskTitleEl.addEventListener('input', updateDescriptionStatus, false);
+    taskDescriptionEl.addEventListener('input', countDescriptionText, false);
+    selectEl.addEventListener('change', function(e){alert(this.value);}, false);
+    
 }
 
 
 
-
 updateDate();
-updateForm();
+submitForm();
