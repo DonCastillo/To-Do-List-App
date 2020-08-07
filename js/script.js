@@ -125,10 +125,41 @@ function countDescriptionText(length){
 
 }
 
+function addTaskCard(title, description, priority){
+    var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0]; 
+
+    var spanPriority = document.createElement('span');
+    spanPriority.addClass = 'priority';
+    spanPriority.addClass = priority.toLowerCase();
+    spanPriority.textContent = priority;
+
+    var headingText = document.createElement('h4');
+    headingText.textContent = title;
+
+    var pDescription = document.createElement('p');
+    pDescription.textContent = description;
+
+    var buttons =   '<div class="controls">' +
+                        '<button class="remove"><i class="far fa-trash-alt"></i></buttons>' +
+                        '<button class="complete"><i class="far fa-check-square"></i></button>' +
+                    '</div>';
+
+    var taskCardEl = document.createElement('div');
+    taskCardEl.addClass = 'task-card';
+    taskCardEl.appendChild(spanPriority);
+    taskCardEl.appendChild(headingText);
+    taskCardEl.appendChild(pDescription);
+    taskCardEl.innerHTML += buttons;
+    //alert('don' + priority.toLowerCase());
+}
+
 function submitForm(){
+    var formEl = document.getElementsByTagName('form')[0];
+    
     var taskTitle = '';
     var taskDescription = '';
     var taskPriority = '';
+    taskPriority = selectEl.value;
 
     taskTitleEl.addEventListener('input', function(){
         taskTitle = this.value;
@@ -141,10 +172,21 @@ function submitForm(){
         countDescriptionText(this.value.length);
     }, false);
 
-
     selectEl.addEventListener('change', function(){
         taskPriority = this.value;
     }, false);
+
+    formEl.addEventListener('submit', function(event){
+        event.preventDefault();
+        if( textLeft < 0 ){
+            alert('Description too long');
+        } else {
+            //console.log(taskPriority);
+            addTaskCard(taskTitle, taskDescription, taskPriority);
+        }
+    }, false);
+
+
     
 }
 

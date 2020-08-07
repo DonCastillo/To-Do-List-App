@@ -64,6 +64,12 @@ form button{
     margin:10px 0 0 0;
     border:0;
 }
+.task-card button{
+    border:0;
+    padding: 4px 10px;
+    background-color:white;
+   
+}
 form input:hover,
 form textarea:hover,
 form select:hover,
