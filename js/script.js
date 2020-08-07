@@ -129,10 +129,10 @@ function addTaskCard(title, description, priority){
     var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0]; 
 
     var spanPriority = document.createElement('span');
-    spanPriority.addClass = 'priority';
-    spanPriority.addClass = priority.toLowerCase();
-    spanPriority.textContent = priority;
-
+    spanPriority.className = 'priority ';
+    spanPriority.className += priority.toLowerCase();
+    spanPriority.textContent = priority.toUpperCase();
+   
     var headingText = document.createElement('h4');
     headingText.textContent = title;
 
@@ -145,11 +145,13 @@ function addTaskCard(title, description, priority){
                     '</div>';
 
     var taskCardEl = document.createElement('div');
-    taskCardEl.addClass = 'task-card';
+    taskCardEl.className = 'task-card';
     taskCardEl.appendChild(spanPriority);
     taskCardEl.appendChild(headingText);
     taskCardEl.appendChild(pDescription);
     taskCardEl.innerHTML += buttons;
+
+    tasksPanelEl.appendChild(taskCardEl);
     //alert('don' + priority.toLowerCase());
 }
 
