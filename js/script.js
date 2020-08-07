@@ -95,17 +95,17 @@ function updateDate(){
     }
 }
 
-function updateDescriptionStatus(){
-    if( taskTitleEl.value.length ){
+function updateDescriptionStatus(length){
+    if( length ){
         taskDescriptionEl.removeAttribute('disabled', '');
     } else {
         taskDescriptionEl.setAttribute('disabled', '');
     }   
 }
 
-function countDescriptionText(){
+function countDescriptionText(length){
     var numCharEl = document.getElementById('num-of-char');
-    textLeft = 60 - taskDescriptionEl.value.length;
+    textLeft = 60 - length;
     var msg = '', color = '';
 
     if (textLeft > 1){
@@ -126,9 +126,25 @@ function countDescriptionText(){
 }
 
 function submitForm(){
-    taskTitleEl.addEventListener('input', updateDescriptionStatus, false);
-    taskDescriptionEl.addEventListener('input', countDescriptionText, false);
-    selectEl.addEventListener('change', function(e){alert(this.value);}, false);
+    var taskTitle = '';
+    var taskDescription = '';
+    var taskPriority = '';
+
+    taskTitleEl.addEventListener('input', function(){
+        taskTitle = this.value;
+        updateDescriptionStatus(this.value.length);
+    }, false);
+
+
+    taskDescriptionEl.addEventListener('input', function(){
+        taskDescription = this.value;
+        countDescriptionText(this.value.length);
+    }, false);
+
+
+    selectEl.addEventListener('change', function(){
+        taskPriority = this.value;
+    }, false);
     
 }
 
