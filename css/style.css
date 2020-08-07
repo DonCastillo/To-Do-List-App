@@ -64,6 +64,10 @@ form button{
     margin:10px 0 0 0;
     border:0;
 }
+form #num-of-char{
+    font-weight:bold;
+    color:green;
+}
 .task-card button{
     border:0;
     padding: 4px 10px;

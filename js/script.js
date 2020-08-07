@@ -3,16 +3,57 @@ var taskDescriptionEl = document.getElementById('task-description');
 var numCharEl = document.getElementById('num-of-char');
 var selectEl = document.getElementById('priority');
 var taskCards = document.getElementsByClassName('task-card');
+var formEl = document.getElementsByTagName('form')[0];
 
 var textLeft = '';
+var taskTitle = '';
+var taskDescription = '';
+var taskPriority = '';
+ 
+taskPriority = selectEl.value;
+
+taskTitleEl.addEventListener('input', function(){
+    taskTitle = this.value;
+    updateDescriptionStatus(this.value.length);
+}, false);
+
+
+taskDescriptionEl.addEventListener('input', function(){
+    taskDescription = this.value;
+    countDescriptionText(this.value.length);
+}, false);
+
+selectEl.addEventListener('change', function(){
+    taskPriority = this.value;
+}, false);
+
+formEl.addEventListener('submit', function(event){
+    event.preventDefault();
+    if( taskTitle.length >= 1){
+        if( textLeft < 0 ){
+            alert('Description too long');
+        } else {
+            addTaskCard(taskTitle, taskDescription, taskPriority);
+            resetForm();
+        }
+    }
+}, false);
+
+formEl.addEventListener('reset', resetForm, false);
+
+updateDate();
+
+function resetForm(){
+    formEl.reset();
+    taskTitle = '';
+    taskDescription = '';
+    taskPriority = selectEl.value;
+    countDescriptionText(0);
+    updateDescriptionStatus(0);
+    updateTaskCards();
+}
 
 function determineSeason(month, date){
-    /** 
-     * winter => dec. 21 - mar. 20
-     * spring => mar. 21 - jun. 20
-     * summer => jun. 21 -sep. 20
-     * fall => sep. 21 - dec. 20
-     */
     var season = '';
     switch( month ){
         case 'January':
@@ -126,7 +167,7 @@ function countDescriptionText(length){
 }
 
 function addTaskCard(title, description, priority){
-    var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0]; 
+    var insertEl = document.querySelector('.tasks-panel h1');
 
     var spanPriority = document.createElement('span');
     spanPriority.className = 'priority ';
@@ -151,48 +192,23 @@ function addTaskCard(title, description, priority){
     taskCardEl.appendChild(pDescription);
     taskCardEl.innerHTML += buttons;
 
-    tasksPanelEl.appendChild(taskCardEl);
-    //alert('don' + priority.toLowerCase());
+    insertEl.after(taskCardEl);
 }
 
-function submitForm(){
-    var formEl = document.getElementsByTagName('form')[0];
-    
-    var taskTitle = '';
-    var taskDescription = '';
-    var taskPriority = '';
-    taskPriority = selectEl.value;
-
-    taskTitleEl.addEventListener('input', function(){
-        taskTitle = this.value;
-        updateDescriptionStatus(this.value.length);
-    }, false);
 
 
-    taskDescriptionEl.addEventListener('input', function(){
-        taskDescription = this.value;
-        countDescriptionText(this.value.length);
-    }, false);
+function updateTaskCards(){
+    //console.log(document.querySelectorAll('.task-card .remove'));
+    var removeButtons = document.querySelectorAll('.task-card .remove');
+    var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0]; 
+    if(removeButtons){
 
-    selectEl.addEventListener('change', function(){
-        taskPriority = this.value;
-    }, false);
-
-    formEl.addEventListener('submit', function(event){
-        event.preventDefault();
-        if( textLeft < 0 ){
-            alert('Description too long');
-        } else {
-            //console.log(taskPriority);
-            addTaskCard(taskTitle, taskDescription, taskPriority);
+        for(let i=0; i<removeButtons.length; ++i){
+            removeButtons[i].addEventListener('click', function(event){
+                this.parentNode.parentNode.remove();
+            }, false);
         }
-    }, false);
-
-
-    
+    }
 }
 
 
-
-updateDate();
-submitForm();
