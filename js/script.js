@@ -7,7 +7,6 @@ var taskCardsCompleted = document.getElementsByClassName('task-completed');
 var formEl = document.getElementsByTagName('form')[0];
 var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0];
 var clearCompleteEl = document.getElementById('clear-complete');
-//var clearCompleteEl = document.getElementById('clear-complete');
 
 
 var textLeft = '';
