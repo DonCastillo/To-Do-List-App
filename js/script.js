@@ -6,7 +6,8 @@ var taskCards = document.getElementsByClassName('task-card');
 var taskCardsCompleted = document.getElementsByClassName('task-completed');
 var formEl = document.getElementsByTagName('form')[0];
 var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0];
-var insertEl = document.querySelector('.tasks-panel h1');
+var clearCompleteEl = document.getElementById('clear-complete');
+//var clearCompleteEl = document.getElementById('clear-complete');
 
 
 var textLeft = '';
@@ -46,6 +47,12 @@ formEl.addEventListener('submit', function(event){
     }
 }, false);
 
+clearCompleteEl.addEventListener('click', function(){
+    for(let i=0; i<taskCardsCompleted.length; ++i){
+        taskCardsCompleted[i].remove();
+    }
+}, false);
+
 formEl.addEventListener('reset', resetForm, false);
 
 updateDate();
@@ -57,7 +64,7 @@ function addInitialMsg(){
         var nothingToDoEl = document.createElement('p');
         nothingToDoEl.id = 'nothing-to-do';
         nothingToDoEl.textContent = 'Nothing to do.';
-        insertEl.after(nothingToDoEl);
+        clearCompleteEl.after(nothingToDoEl);
     } else {
         var nothingToDo = document.getElementById('nothing-to-do');
         if(nothingToDo){
@@ -246,5 +253,5 @@ function addTaskCard(title, description, priority){
     taskCardEl.appendChild(headingText);
     taskCardEl.appendChild(pDescription);
     taskCardEl.appendChild(buttons);
-    insertEl.after(taskCardEl);
+    clearCompleteEl.after(taskCardEl);
 }

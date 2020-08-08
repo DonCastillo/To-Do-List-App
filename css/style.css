@@ -2,6 +2,9 @@ body{
     /* background: rgb(0,0,0);
     background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(79,79,79,1) 100%); */
 }
+p{
+    margin:0;
+}
 #wrapper{
     margin:2em;
 }
@@ -135,6 +138,28 @@ ul#cards li{
 #nothing-to-do{
     color:grey;
     font-size:15px;
+    margin-top: 25px;
+}
+#clear-complete{
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+#clear-complete p{
+    text-transform: uppercase;
+    background-color: grey;
+    color: white;
+    padding: 3px 5px;
+    font-size: 12px;
+    border-radius: 6px;
+    display:inline-block;
+}
+#clear-complete:hover{
+    cursor: pointer;
 }
 .task-card{
     min-height:120px;
