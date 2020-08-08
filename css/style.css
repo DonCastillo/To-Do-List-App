@@ -152,6 +152,7 @@ ul#cards li{
 }
 .task-card p{
     font-size:13px;
+    min-height:unset;
 }
 .task-card h4{
     font-size:19px;
@@ -172,21 +173,22 @@ ul#cards li{
     bottom:0;
     right:0;
     left:0;
-    
+    height: 30px;
 }
 .task-card .controls i{
     font-size:20px;
 }
-/* .task-card .controls i.fa-trash-alt{
-    position:absolute;
-    left:0;
-    bottom:0;
+
+.task-completed{
+    opacity:0.2;
 }
-.task-card .controls i.fa-check-square{
-    position:absolute;
-    right:0;
-    bottom:0;
-} */
+.task-completed h4,
+.task-completed p{
+    text-decoration: line-through;
+}
+.task-completed .controls{
+    display:none;
+}
 
 
 @media screen and (max-width: 1199px) {
@@ -206,4 +208,98 @@ ul#cards li{
     .to-do-panel, .tasks-panel{
         width:100%;
     }
+}
+
+@media screen and (max-width: 575px) {
+    #wrapper{
+        margin:0;
+    }
+    section{
+        min-height:unset;
+        padding:0;
+    }
+    .to-do-panel{
+        padding:0;
+        display:block;
+    }
+    #to-do{
+        max-width:100%;
+        /* margin-top:10px; */
+        -webkit-box-shadow:none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        position: static;
+    }
+    #to-do #top-panel {
+        min-height:unset;
+        padding:5px 0;
+    }
+    #to-do #top-panel #date-stamp {
+        position: unset;
+        bottom: unset;
+        right: unset;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    #to-do #top-panel #date-stamp #date,
+    #to-do #top-panel #date-stamp #day{
+        margin:0;
+    }
+    form {
+        padding: 15px;
+        padding-top:5px;
+    }
+    form textarea {
+        min-height:unset;
+    }
+    form input,
+    form textarea,
+    form select,
+    form button{
+        font-size:13px;
+    }
+    form button i{
+        font-size:13px;
+    }
+    form #priority{
+        width:40%;
+        float:left;
+    }
+    form #num-of-char {
+        font-size: 12px;
+        width:100%;
+        display:block;
+    }
+    label[for="priority"]{
+        display:none;
+    }
+    form button#add-button {
+        margin-left: 5px;
+    }
+    .tasks-panel h1{
+        display:none;
+    }
+    .task-card{
+        width:100%;
+        margin:3px 0;
+        min-height:90px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow:none;
+        box-shadow: none;
+        border-bottom: 1px solid black;
+    }
+    .task-card h4,
+    .task-card p{
+        margin:0;
+        font-size:15px;
+    }
+    .task-card .controls{
+        left:unset;
+        height:unset;
+        bottom:unset;
+        top:0;
+    }
+    
+    
 }

@@ -4,6 +4,8 @@ var numCharEl = document.getElementById('num-of-char');
 var selectEl = document.getElementById('priority');
 var taskCards = document.getElementsByClassName('task-card');
 var formEl = document.getElementsByTagName('form')[0];
+var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0];
+
 
 var textLeft = '';
 var taskTitle = '';
@@ -199,11 +201,15 @@ function addTaskCard(title, description, priority){
 
     // add remove event handler
     buttonRemove.addEventListener('click', function(event){
-        console.log('Bye');
+        this.parentNode.parentNode.remove();
     }, false);
 
     buttonComplete.addEventListener('click', function(event){
-        console.log('Hello');
+        var target = this.parentNode.parentNode;
+        var clone = target.cloneNode(true);
+        target.remove();
+        tasksPanelEl.appendChild(clone);
+        clone.className += ' task-completed';
     }, false);
 
     // append all buttons
@@ -212,48 +218,11 @@ function addTaskCard(title, description, priority){
     buttons.appendChild(buttonRemove);
     buttons.appendChild(buttonComplete);
 
-    // var buttons =   '<div class="controls">' +
-    //                     '<button class="remove"><i class="far fa-trash-alt"></i></buttons>' +
-    //                     '<button class="complete"><i class="far fa-check-square"></i></button>' +
-    //                 '</div>';
-
     var taskCardEl = document.createElement('div');
     taskCardEl.className = 'task-card';
     taskCardEl.appendChild(spanPriority);
     taskCardEl.appendChild(headingText);
     taskCardEl.appendChild(pDescription);
     taskCardEl.appendChild(buttons);
-    //taskCardEl.innerHTML += buttons;
-
-
     insertEl.after(taskCardEl);
 }
-
-
-
-// function updateTaskCards(){
-//     var removeButtons = document.querySelectorAll('.task-card .remove');
-//     var completeButtons = document.querySelectorAll('.task-card .complete');
-//     if(removeButtons){
-
-//         for(let i=0; i<removeButtons.length; ++i){
-//             removeButtons[i].addEventListener('click', function(event){
-//                 this.parentNode.parentNode.remove();
-//                 console.log(this);
-//             }, false);
-//         }
-//     }
-
-
-
-//     if(completeButtons){
-//         for(let i=0; i<completeButtons.length; ++i){
-//             completeButtons[i].addEventListener('click', function(event){
-//                 console.log(this);
-//             }, false);
-//         }
-//     }
-
-// }
-
-
