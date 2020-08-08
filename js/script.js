@@ -9,6 +9,7 @@ var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0];
 var clearCompleteEl = document.getElementById('clear-complete');
 
 
+
 var textLeft = '';
 var taskTitle = '';
 var taskDescription = '';
@@ -47,6 +48,8 @@ formEl.addEventListener('submit', function(event){
 }, false);
 
 clearCompleteEl.addEventListener('click', function(){
+    
+    alert(taskCardsCompleted.length);
     for(let i=0; i<taskCardsCompleted.length; ++i){
         taskCardsCompleted[i].remove();
     }
@@ -196,7 +199,6 @@ function countDescriptionText(length){
 
 function addTaskCard(title, description, priority){
     
-
     // priority tab
     var spanPriority = document.createElement('span');
     spanPriority.className = 'priority ';
@@ -253,4 +255,18 @@ function addTaskCard(title, description, priority){
     taskCardEl.appendChild(pDescription);
     taskCardEl.appendChild(buttons);
     clearCompleteEl.after(taskCardEl);
+    adjustCardsHeight();
+}
+
+function adjustCardsHeight(){
+    var maxHeight = 0;
+    for(let i=0; i<taskCards.length; ++i){
+        var thisHeight = taskCards[i].clientHeight
+        if( maxHeight < thisHeight ){
+            maxHeight = thisHeight;
+        }
+    }
+    for(let i=0; i<taskCards.length; ++i){
+        taskCards[i].style.minHeight = `${maxHeight}px`;
+    }
 }
