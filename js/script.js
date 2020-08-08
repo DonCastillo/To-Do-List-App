@@ -48,8 +48,7 @@ formEl.addEventListener('submit', function(event){
 }, false);
 
 clearCompleteEl.addEventListener('click', function(){
-    
-    alert(taskCardsCompleted.length);
+    //alert(taskCardsCompleted.length);
     for(let i=0; i<taskCardsCompleted.length; ++i){
         taskCardsCompleted[i].remove();
     }
