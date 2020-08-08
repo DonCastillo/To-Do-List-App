@@ -3,8 +3,10 @@ var taskDescriptionEl = document.getElementById('task-description');
 var numCharEl = document.getElementById('num-of-char');
 var selectEl = document.getElementById('priority');
 var taskCards = document.getElementsByClassName('task-card');
+var taskCardsCompleted = document.getElementsByClassName('task-completed');
 var formEl = document.getElementsByTagName('form')[0];
 var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0];
+var insertEl = document.querySelector('.tasks-panel h1');
 
 
 var textLeft = '';
@@ -13,6 +15,8 @@ var taskDescription = '';
 var taskPriority = '';
  
 taskPriority = selectEl.value;
+
+window.addEventListener('load', addInitialMsg, false);
 
 taskTitleEl.addEventListener('input', function(){
     taskTitle = this.value;
@@ -37,6 +41,7 @@ formEl.addEventListener('submit', function(event){
         } else {
             addTaskCard(taskTitle, taskDescription, taskPriority);
             resetForm();
+            addInitialMsg();
         }
     }
 }, false);
@@ -45,6 +50,22 @@ formEl.addEventListener('reset', resetForm, false);
 
 updateDate();
 
+
+
+function addInitialMsg(){
+    if( taskCards.length === taskCardsCompleted.length ){
+        var nothingToDoEl = document.createElement('p');
+        nothingToDoEl.id = 'nothing-to-do';
+        nothingToDoEl.textContent = 'Nothing to do.';
+        insertEl.after(nothingToDoEl);
+    } else {
+        var nothingToDo = document.getElementById('nothing-to-do');
+        if(nothingToDo){
+            nothingToDo.remove();
+        }
+    }
+}
+
 function resetForm(){
     formEl.reset();
     taskTitle = '';
@@ -52,7 +73,6 @@ function resetForm(){
     taskPriority = selectEl.value;
     countDescriptionText(0);
     updateDescriptionStatus(0);
-    //updateTaskCards();
 }
 
 function determineSeason(month, date){
@@ -169,7 +189,7 @@ function countDescriptionText(length){
 }
 
 function addTaskCard(title, description, priority){
-    var insertEl = document.querySelector('.tasks-panel h1');
+    
 
     // priority tab
     var spanPriority = document.createElement('span');
@@ -202,6 +222,7 @@ function addTaskCard(title, description, priority){
     // add remove event handler
     buttonRemove.addEventListener('click', function(event){
         this.parentNode.parentNode.remove();
+        addInitialMsg();
     }, false);
 
     buttonComplete.addEventListener('click', function(event){
@@ -210,6 +231,7 @@ function addTaskCard(title, description, priority){
         target.remove();
         tasksPanelEl.appendChild(clone);
         clone.className += ' task-completed';
+        addInitialMsg();
     }, false);
 
     // append all buttons

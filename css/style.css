@@ -132,6 +132,10 @@ ul#cards li{
           page-break-inside: avoid;
                break-inside: avoid;
 }
+#nothing-to-do{
+    color:grey;
+    font-size:15px;
+}
 .task-card{
     min-height:120px;
     -webkit-box-shadow: 10px 10px 27px -16px rgba(0,0,0,0.84);
@@ -221,6 +225,9 @@ ul#cards li{
     .to-do-panel{
         padding:0;
         display:block;
+    }
+    .tasks-panel{
+        padding:10px;
     }
     #to-do{
         max-width:100%;
