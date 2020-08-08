@@ -14,10 +14,12 @@ var textLeft = '';
 var taskTitle = '';
 var taskDescription = '';
 var taskPriority = '';
+
  
 taskPriority = selectEl.value;
 
 window.addEventListener('load', addInitialMsg, false);
+window.addEventListener('resize', adjustCardsHeight ,false);
 
 taskTitleEl.addEventListener('input', function(){
     taskTitle = this.value;
@@ -258,14 +260,23 @@ function addTaskCard(title, description, priority){
 }
 
 function adjustCardsHeight(){
-    var maxHeight = 0;
+    var maxHeightTaskCards = 0;
+
+    for(let i=0; i<taskCards.length; ++i){
+        taskCards[i].style.minHeight = 'unset';
+    }
+
+    // determine maxheight
     for(let i=0; i<taskCards.length; ++i){
         var thisHeight = taskCards[i].clientHeight
-        if( maxHeight < thisHeight ){
-            maxHeight = thisHeight;
+        if( maxHeightTaskCards < thisHeight ){
+            maxHeightTaskCards = thisHeight;
         }
     }
+
+    // apply maxheight to all cards
     for(let i=0; i<taskCards.length; ++i){
-        taskCards[i].style.minHeight = `${maxHeight}px`;
+        taskCards[i].style.minHeight = `${maxHeightTaskCards}px`;
     }
+    console.log(maxHeightTaskCards);
 }
