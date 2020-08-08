@@ -166,9 +166,13 @@ ul#cards li{
     background-color:green;
 }
 .task-card .controls{
-    position:relative;
+    position:absolute;
     display:flex;
     justify-content: space-between;
+    bottom:0;
+    right:0;
+    left:0;
+    
 }
 .task-card .controls i{
     font-size:20px;

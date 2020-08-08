@@ -50,7 +50,7 @@ function resetForm(){
     taskPriority = selectEl.value;
     countDescriptionText(0);
     updateDescriptionStatus(0);
-    updateTaskCards();
+    //updateTaskCards();
 }
 
 function determineSeason(month, date){
@@ -169,46 +169,91 @@ function countDescriptionText(length){
 function addTaskCard(title, description, priority){
     var insertEl = document.querySelector('.tasks-panel h1');
 
+    // priority tab
     var spanPriority = document.createElement('span');
     spanPriority.className = 'priority ';
     spanPriority.className += priority.toLowerCase();
     spanPriority.textContent = priority.toUpperCase();
    
+    // heading
     var headingText = document.createElement('h4');
     headingText.textContent = title;
 
+    // description
     var pDescription = document.createElement('p');
     pDescription.textContent = description;
 
-    var buttons =   '<div class="controls">' +
-                        '<button class="remove"><i class="far fa-trash-alt"></i></buttons>' +
-                        '<button class="complete"><i class="far fa-check-square"></i></button>' +
-                    '</div>';
+    // remove button with icon
+    var trashIcon = document.createElement('i');
+    trashIcon.className = 'far fa-trash-alt';
+    var buttonRemove = document.createElement('button');
+    buttonRemove.className = 'remove';
+    buttonRemove.appendChild(trashIcon);
+
+    // complete button 
+    var checkIcon = document.createElement('i');
+    checkIcon.className = 'far fa-check-square';
+    var buttonComplete = document.createElement('button');
+    buttonComplete.className = 'complete';
+    buttonComplete.appendChild(checkIcon);
+
+    // add remove event handler
+    buttonRemove.addEventListener('click', function(event){
+        console.log('Bye');
+    }, false);
+
+    buttonComplete.addEventListener('click', function(event){
+        console.log('Hello');
+    }, false);
+
+    // append all buttons
+    var buttons = document.createElement('div');
+    buttons.className = 'controls';
+    buttons.appendChild(buttonRemove);
+    buttons.appendChild(buttonComplete);
+
+    // var buttons =   '<div class="controls">' +
+    //                     '<button class="remove"><i class="far fa-trash-alt"></i></buttons>' +
+    //                     '<button class="complete"><i class="far fa-check-square"></i></button>' +
+    //                 '</div>';
 
     var taskCardEl = document.createElement('div');
     taskCardEl.className = 'task-card';
     taskCardEl.appendChild(spanPriority);
     taskCardEl.appendChild(headingText);
     taskCardEl.appendChild(pDescription);
-    taskCardEl.innerHTML += buttons;
+    taskCardEl.appendChild(buttons);
+    //taskCardEl.innerHTML += buttons;
+
 
     insertEl.after(taskCardEl);
 }
 
 
 
-function updateTaskCards(){
-    //console.log(document.querySelectorAll('.task-card .remove'));
-    var removeButtons = document.querySelectorAll('.task-card .remove');
-    var tasksPanelEl = document.getElementsByClassName('tasks-panel')[0]; 
-    if(removeButtons){
+// function updateTaskCards(){
+//     var removeButtons = document.querySelectorAll('.task-card .remove');
+//     var completeButtons = document.querySelectorAll('.task-card .complete');
+//     if(removeButtons){
 
-        for(let i=0; i<removeButtons.length; ++i){
-            removeButtons[i].addEventListener('click', function(event){
-                this.parentNode.parentNode.remove();
-            }, false);
-        }
-    }
-}
+//         for(let i=0; i<removeButtons.length; ++i){
+//             removeButtons[i].addEventListener('click', function(event){
+//                 this.parentNode.parentNode.remove();
+//                 console.log(this);
+//             }, false);
+//         }
+//     }
+
+
+
+//     if(completeButtons){
+//         for(let i=0; i<completeButtons.length; ++i){
+//             completeButtons[i].addEventListener('click', function(event){
+//                 console.log(this);
+//             }, false);
+//         }
+//     }
+
+// }
 
 
