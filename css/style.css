@@ -1,6 +1,7 @@
 body{
     /* background: rgb(0,0,0);
     background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(79,79,79,1) 100%); */
+    overflow: hidden;
 }
 
 #wrapper{
@@ -22,7 +23,7 @@ section{
     justify-content:center;
     align-items: center;
     width:40%;
-    
+
 }
 #to-do{
     max-width:375px;
@@ -41,7 +42,7 @@ box-shadow: 10px 10px 14px -6px rgba(0,0,0,0.62);
     min-height: 150px;
     width:100%;
     position:relative;
-    
+
     /* background-color:green; */
 }
 #to-do #top-panel #date-stamp{
@@ -73,7 +74,7 @@ form #num-of-char{
     border:0;
     padding: 4px 10px;
     background-color:white;
-   
+
 }
 form input:hover,
 form textarea:hover,
@@ -139,7 +140,7 @@ ul#cards li{
     margin-top: 25px;
 }
 #clear-complete{
-    -webkit-user-select: none; /* Chrome/Safari */        
+    -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
 
@@ -179,6 +180,7 @@ ul#cards li{
 }
 .task-card p{
     font-size:13px;
+    margin-bottom:2rem;
     min-height:unset;
 }
 .task-card h4{
@@ -330,6 +332,6 @@ ul#cards li{
         bottom:unset;
         top:0;
     }
-    
-    
+
+
 }
